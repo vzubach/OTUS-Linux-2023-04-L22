@@ -1,6 +1,6 @@
 ### OTUS-Linux-2023-04-L22 | PAM
 
-1. Созданы пользователи *otusadm* и *otus*. Создана группа admin, в неё добавлены пользователи: otusadm,root и vagrant;
+1. Созданы пользователи *otusadm* и *otus*. Создана группа **admin**, в неё добавлены пользователи: *otusadm*, *root* и *vagrant*;
 
 		[root@Centos8 yum.repos.d]# cat /etc/group | grep -e ^admin  
 		min:x:1003:otusadm,root,vagrant
@@ -28,10 +28,10 @@
 	>**account	   required		pam_exec.so /usr/local/bin/login.sh**</br>
 	>account    include      password-auth</br>
 	>-password   include      password-auth</br>
-	># pam_selinux.so close should be the first session rule</br>
+	>\# pam_selinux.so close should be the first session rule</br>
 	>session    required     pam_selinux.so close</br>
 	>session    required     pam_loginuid.so</br>
-	># pam_selinux.so open should only be followed by sessions to be executed in the user context</br>
+	>\# pam_selinux.so open should only be followed by sessions to be executed in the user context</br>
 	>session    required     pam_selinux.so open env_params</br>
 	>session    required     pam_namespace.so</br>
 	>session    optional     pam_keyinit.so force revoke</br>
